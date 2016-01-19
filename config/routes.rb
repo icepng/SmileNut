@@ -1,9 +1,21 @@
 Rails.application.routes.draw do
   get 'account/login'
 
-  get 'account/register'
+  get 'account/register' 
 
   get 'activites/all-events'
+  
+  get 'account/showUnreadMessage'
+  
+  # post 'activites/add_in_comment'
+  
+  resources :activites do
+   post :add_in_comment #-> url.com/activities/:activity_id/add_in_comment
+end
+  
+  get 'launch' => 'activites#new'
+  
+#  post 'activites/all-events'
 
   get 'nuts/index'
 
@@ -12,6 +24,20 @@ Rails.application.routes.draw do
   post 'account/login'
 
   post 'account/register'
+  
+  post 'activites/add'
+  
+  get 'account/logout'
+  
+  
+  
+  delete 'activites/delete'
+
+  post 'activites/add_comment'
+  
+  get 'nuts/user_profile'
+  post 'nuts/user_profile'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -26,7 +52,7 @@ Rails.application.routes.draw do
 
     root 'nuts#index'
     resources :nuts
-    resources :activites
+    # resources :activites
     resources :hole
     resources :account
     

@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20151231013907) do
-=======
-ActiveRecord::Schema.define(version: 20160104125054) do
+ActiveRecord::Schema.define(version: 20160107130748) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id"
@@ -22,22 +19,35 @@ ActiveRecord::Schema.define(version: 20160104125054) do
     t.text     "content"
     t.text     "participant_id"
     t.text     "tag"
-    t.string   "place"
-    t.time     "start_date"
-    t.time     "end_date"
+    t.string   "city"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.integer  "recommend"
     t.integer  "want_join"
     t.integer  "admin_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.time     "start_time"
+    t.time     "end_time"
+    t.string   "province"
+    t.string   "district"
+    t.string   "detail_addr"
   end
->>>>>>> origin/master
 
   create_table "admins", force: :cascade do |t|
     t.string   "name"
     t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comment_activities", force: :cascade do |t|
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.integer  "activity_id"
+    t.text     "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,6 +61,8 @@ ActiveRecord::Schema.define(version: 20160104125054) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "Email"
+    t.text     "readed"
+    t.text     "unreaded"
   end
 
 end
